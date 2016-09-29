@@ -1,0 +1,8 @@
+.container {
+  width: 555px;
+  margin: 25px auto;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  border: 2px solid #bbb;
+  border-radius: 2px;
+}

@@ -1,0 +1,29 @@
+@()
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular 2 FusionCharts Demo</title>
+
+    <!-- 1. Load custom CSS & fonts-->
+    <link rel="stylesheet" href="@routes.Assets.versioned("style.css")">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300' rel='stylesheet'>
+
+    <!-- 2. Load Angular 2 specific libraries -->
+    <script src="https://code.angularjs.org/2.0.0-beta.17/angular2-polyfills.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.17/Rx.umd.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.17/angular2-all.umd.dev.js"></script>
+
+    <!-- 3. Load FusionCharts library-->
+    <script src="https://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+
+    <!-- 4. Load component -->
+    <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+</head>
+<body>
+
+<!-- 5. Display the application -->
+<angular-chart>Loading...</angular-chart>
+</body>
+</html>
