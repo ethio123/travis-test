@@ -1,7 +1,9 @@
 language: scala
 scala:
-   - 2.11.8
+- 2.11.8
 jdk:
-  - oraclejdk8
-  
+- oraclejdk8
 before_script: cd scala
+deploy:
+  api_key:
+    secure: Sa4ji1r5tALJGbSFOZjUGnuVuOb4nPTGKVD7mke1gnb86asgnyP9hWu/E0XKUxVgVJnOrOfFEJZmLMOfg9FI7KO0fM9pyntYaekPoubLPGLrmoeN3dqZO9+jyzzs7P/hMRLfjEBRZGnFmCRMrYs9YnjCq5PENk2OPO/jXrDIXKjApER4swMujZkLJubnZ57fk7GaO6VS7/UAH/HmYSQGyOlAApEvxAg/ockB9hAo7vNxIEwZ+cvJMEXZG6qMY6NGtWoGutA8xd9U7+7DtvFA6Vr7fPibpxB275e9n5XsxS+97tVTSvrR4/4T2V5yOzAZHXmK52TgOuQQKeeihfGpvozfT1RKKhiFfyVCvbc43zpfXqvYKzYVm+QbZpNVAwpNRBDwsWCi1Q1oimc2N2szcQsiQGsXIFWivg7L8uFlrr6ETtEawmc7TUjmOXua7NlLFIBctLV2gQkrYzEA+4PcG3leV2AI23r/lRqvCUKSJzuwLOfpM5JKHJz0d2YLq1/G+u745k43yCIf/9s71jmhZaNi8Ka7fIti9vPjEemfgf3yssVSYgYPRBNShyj5ydi9l/a9R7EFwubb4fZHeadqMwwbMe5M/pZMzN4p9u4XwLOCMeRXAJVE8JcGd5lLeb3DUg9pgveuMsvbRpsBPqqEyEG4sUauG3bji027yT4/mjo=
