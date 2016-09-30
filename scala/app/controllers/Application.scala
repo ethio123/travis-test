@@ -50,7 +50,7 @@ class Application @Inject()(
   implicit val timeout:Timeout = 5.seconds
 
   def sayHi = Action.async {implicit rs =>
-    Future.successful(Ok("Helloworld!"))
+    Future.successful(Ok("Helloworld!, Hello from Gordon"))
   }
 
   def testCharts = Action.async {implicit rs =>
