@@ -1,5 +1,6 @@
 
 GET     /                           controllers.Application.index
+GET     /reddit                     controllers.Application.redditEdit
 GET     /hi                         controllers.Application.sayHi
 GET     /testCharts                 controllers.Application.testCharts
 

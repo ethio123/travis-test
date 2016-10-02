@@ -2,7 +2,7 @@ import {Todo} from "./store"
 
 export abstract class TodoStore {
 
-abstract allCompleted():boolean
+    abstract allCompleted():boolean
 
     abstract setAllTo(completed:Boolean):void
 

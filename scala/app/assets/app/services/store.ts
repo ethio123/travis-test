@@ -2,16 +2,16 @@ import {Injectable} from "@angular/core"
 import {TodoStore} from "./todo.store"
 
 export interface Todo {
-completed: Boolean
-editing: Boolean
-
-title: String
+    completed: Boolean
+    editing: Boolean
+    title: String
 }
+
 @Injectable()
 export class LocalStorageTodoStore implements TodoStore {
-todos:Array<Todo>
+    todos:Array<Todo>
 
-constructor() {
+    constructor() {
         this.todos = JSON.parse(localStorage.getItem("angular2-todos") || "[]")
     }
 
