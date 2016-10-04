@@ -8,6 +8,7 @@
     <title>Angular2 • Simple Reddit</title>
     <link rel="stylesheet" href="@routes.Assets.versioned("lib/todomvc-common/base.css")">
     <link rel="stylesheet" href="assets/stylesheets/todomvc-app.css">
+    <link rel="stylesheet" href="assets/stylesheets/semantic.min.css">
     <script type='text/javascript' src='@routes.Assets.versioned("lib/systemjs/dist/system-polyfills.js")'></script>
     <script type='text/javascript' src='@routes.Assets.versioned("lib/core-js/client/shim.min.js")'></script>
     <script type='text/javascript' src='@routes.Assets.versioned("lib/zone.js/dist/zone.js")'></script>
@@ -26,7 +27,7 @@
 
 
         var packages = {
-                'app': {main: 'app1.js', defaultExtension: 'js'},
+                'app': {main: 'reddit.js', defaultExtension: 'js'},
                 'rxjs': {defaultExtension: 'js'},
                 'assets/lib': {defaultExtension: 'js'},
                 'symbol-observable': {defaultExtension: 'js', main: 'index.js'}
@@ -72,6 +73,6 @@
 		</script>
 </head>
     <body>
-        <todo-world></todo-world>
+        <todo-reddit></todo-reddit>
     </body>
 </html>
