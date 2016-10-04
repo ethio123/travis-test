@@ -1,9 +1,16 @@
 
 name := """digit-recog"""
 
-version := "1.0-SNAPSHOT"
+lazy val commonSettings = Seq(
+    organization := "dele.book",
+    version := "0.1.0",
+    scalaVersion := "2.11.8"
+)
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala)
+lazy val root = (project in file(".")).settings(commonSettings: _*)
+  .enablePlugins(PlayScala).aggregate(nnet).dependsOn(nnet)
+
+lazy val nnet = (project in file("nnet")).settings(commonSettings: _*)
 
 scalaVersion := "2.11.8"
 incOptions := incOptions.value.withNameHashing(true)

@@ -8,7 +8,6 @@ import javax.inject.{Inject, Singleton}
 
 import akka.stream.scaladsl.Source
 import akka.util.{ByteString, Timeout}
-
 import models._
 import org.apache.pdfbox.util.PDFMergerUtility
 import play.api.db.slick.DatabaseConfigProvider
@@ -16,14 +15,13 @@ import play.api.http.{HttpChunk, HttpEntity}
 import play.api.i18n.{I18nSupport, Lang, MessagesApi}
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import play.api.mvc.{AnyContent, _}
-
 import slick.driver.JdbcProfile
 
 import scala.collection.mutable.ListBuffer
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 import akka.actor.ActorSystem
-
+import dele.book.common.NNet
 import org.joda.time.DateTime
 
 import scala.util.{Failure, Success}
@@ -47,6 +45,15 @@ class Application @Inject()(
     Ok(views.html.index1())
   }
 
+  def nnet = Action {
+    /** change the template here to use a different way of compilation and loading of the ts ng2 app.
+      * index()  :    does no ts compilation in advance. the ts files are download by the browser and compiled there to js.
+      * index1() :    compiles the ts files to individual js files. Systemjs loads the individual files.
+      * index2() :    add the option -DtsCompileMode=stage to your sbt task . F.i. 'sbt ~run -DtsCompileMode=stage' this will produce the app as one single js file.
+      */
+    val nnet = new NNet(IndexedSeq(2, 2, 2))
+    Ok(s"NNet: ${nnet.layerNodeCounts}")
+  }
   def redditEdit = Action {
     /** change the template here to use a different way of compilation and loading of the ts ng2 app.
       * index()  :    does no ts compilation in advance. the ts files are download by the browser and compiled there to js.

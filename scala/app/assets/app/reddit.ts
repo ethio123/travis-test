@@ -17,7 +17,9 @@ import {bootstrap} from "@angular/platform-browser-dynamic"
     <input name="link" #newLink>
   </div>
 
-  <button (click)="addArticle(newTitle, newLink)">Submit</button>
+  <button (click)="addArticle(newTitle, newLink)"
+    class="ui positive right floated button">
+  Submit</button>
 </form>
 `
 })

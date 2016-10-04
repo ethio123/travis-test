@@ -2,6 +2,7 @@
 GET     /                           controllers.Application.index
 GET     /reddit                     controllers.Application.redditEdit
 GET     /hi                         controllers.Application.sayHi
+GET     /nnet                       controllers.Application.nnet
 GET     /testCharts                 controllers.Application.testCharts
 
 # Map static resources from the /public folder to the /assets URL path
