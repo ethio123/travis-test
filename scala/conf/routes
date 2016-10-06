@@ -4,6 +4,8 @@ GET     /reddit                     controllers.Application.redditEdit
 GET     /hi                         controllers.Application.sayHi
 GET     /nnet                       controllers.Application.nnet
 GET     /testCharts                 controllers.Application.testCharts
+POST    /init-nnet                  controllers.Application.initNNet
+POST    /eval                       controllers.Application.eval
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

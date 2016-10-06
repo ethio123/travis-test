@@ -8,6 +8,8 @@ import breeze.linalg.{DenseMatrix, DenseVector}
 
 case class LayerParams(w:DenseMatrix[Double], b:DenseVector[Double])
 
+case class LayerParamsJson(layerIndex:Int, rows:Int, cols:Int, w:Array[Double], b:Array[Double])
+
 case class LayerResults(param:LayerParams, in:DenseVector[Double]) {
   val z:DenseVector[Double] = param.w * in + param.b
   val z_der = NNet.activation_der(z)

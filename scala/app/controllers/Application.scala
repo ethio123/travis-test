@@ -6,7 +6,7 @@ import java.sql.Timestamp
 import java.util.{Base64, Calendar, TimeZone}
 import javax.inject.{Inject, Singleton}
 
-import akka.stream.scaladsl.Source
+import akka.stream.scaladsl.{FileIO, Source}
 import akka.util.{ByteString, Timeout}
 import models._
 import org.apache.pdfbox.util.PDFMergerUtility
@@ -23,6 +23,12 @@ import scala.concurrent.duration._
 import akka.actor.ActorSystem
 import dele.book.common.NNet
 import org.joda.time.DateTime
+import play.api.libs.Files.TemporaryFile
+import play.api.libs.iteratee.Iteratee
+import play.api.libs.streams.Accumulator
+import play.api.mvc.MultipartFormData.FilePart
+import play.core.parsers.Multipart.{FileInfo, FilePartHandler}
+import play.mvc.Http.MultipartFormData.FileInfo
 
 import scala.util.{Failure, Success}
 
@@ -43,6 +49,35 @@ class Application @Inject()(
       * index2() :    add the option -DtsCompileMode=stage to your sbt task . F.i. 'sbt ~run -DtsCompileMode=stage' this will produce the app as one single js file.
       */
     Ok(views.html.index1())
+  }
+
+
+  def initNNet = Action(parse.multipartFormData) { req =>
+    req.body.file("p").map{ p =>
+      val f = p.ref.file
+      //println(f.getName)
+      val j = scala.io.Source.fromFile(f).mkString
+      //println(j.length)
+      //println(j.substring(0, 20))
+
+      GlobalTest.nnet = NNet.fromJson(j)
+      Ok(s"NNet: ${GlobalTest.nnet.layerNodeCounts}\n")
+
+    }.getOrElse(InternalServerError("Failed to initialize NNet\n"))
+  }
+
+  def eval = Action.async{ req =>
+    if (GlobalTest.nnet == null) {
+      Future.successful(InternalServerError("NNet not initialized, post model to /init-nnet first"))
+    }
+    else {
+      val j = req.body.asText.get
+      val d = j.split(",")
+      val expected = d(0).toInt
+      val pixels = d.slice(1, d.length).map(_.toDouble / 255)
+      val res = GlobalTest.nnet.evaluate(pixels)
+      Future.successful(Ok(s"Result(Expected): $res($expected), match? ${res == expected}\n"))
+    }
   }
 
   def nnet = Action {
