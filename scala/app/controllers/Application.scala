@@ -86,8 +86,8 @@ class Application @Inject()(
       * index1() :    compiles the ts files to individual js files. Systemjs loads the individual files.
       * index2() :    add the option -DtsCompileMode=stage to your sbt task . F.i. 'sbt ~run -DtsCompileMode=stage' this will produce the app as one single js file.
       */
-    val nnet = new NNet(IndexedSeq(2, 2, 2))
-    Ok(s"NNet: ${nnet.layerNodeCounts}")
+    //val nnet = new NNet(IndexedSeq(2, 2, 2))
+    Ok(s"NNet: ${GlobalTest.nnet.layerNodeCounts}")
   }
   def redditEdit = Action {
     /** change the template here to use a different way of compilation and loading of the ts ng2 app.

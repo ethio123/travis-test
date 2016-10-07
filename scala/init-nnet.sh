@@ -1,1 +1,1 @@
-curl -X POST -F "p=@./layer-params.json" http://localhost:5000/init-nnet
+curl -X POST -F "p=@./layer-params.json" $1/init-nnet

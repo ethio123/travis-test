@@ -11,9 +11,12 @@
     <link rel="stylesheet" href="assets/stylesheets/semantic.min.css">
     <script type='text/javascript' src='@routes.Assets.versioned("lib/systemjs/dist/system-polyfills.js")'></script>
     <script type='text/javascript' src='@routes.Assets.versioned("lib/core-js/client/shim.min.js")'></script>
-    <script type='text/javascript' src='@routes.Assets.versioned("lib/zone.js/dist/zone.js")'></script>
+
     <script type='text/javascript' src='@routes.Assets.versioned("lib/reflect-metadata/Reflect.js")'></script>
     <script type='text/javascript' src='@routes.Assets.versioned("lib/systemjs/dist/system.src.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.versioned("lib/angular2/bundles/angular2.dev.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.versioned("lib/angular2/bundles/http.dev.js")'></script>
+    <script type='text/javascript' src='@routes.Assets.versioned("lib/zone.js/dist/zone.js")'></script>
 
     <script>    @* our app is downloaded as individual javascript files by SystemJs
                      after compilation by sbt-typescript*@
@@ -27,7 +30,7 @@
 
 
         var packages = {
-                'app': {main: 'redditFull.js', defaultExtension: 'js'},
+                'app': {main: 'NNetTestDataPost.js', defaultExtension: 'js'},
                 'rxjs': {defaultExtension: 'js'},
                 'assets/lib': {defaultExtension: 'js'},
                 'symbol-observable': {defaultExtension: 'js', main: 'index.js'}
@@ -73,6 +76,6 @@
 		</script>
 </head>
     <body>
-        <todo-reddit></todo-reddit>
+        <todo-nnet-test></todo-nnet-test>
     </body>
 </html>

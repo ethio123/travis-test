@@ -22,7 +22,7 @@ resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 resolvers += Resolver.sonatypeRepo("snapshots")
 
 libraryDependencies ++= {
-    val ngVersion="2.0.0-rc.4"
+    val ngVersion="2.0.0-rc.5"
     Seq(
         "org.postgresql" % "postgresql" % "9.4.1207",
         "com.typesafe.play" %% "play-slick" % "2.0.0",
@@ -39,9 +39,11 @@ libraryDependencies ++= {
         // from typescript template project
         cache,
         //angular2 dependencies
+
         "org.webjars.npm" % "angular__common" % ngVersion,
         "org.webjars.npm" % "angular__compiler" % ngVersion,
         "org.webjars.npm" % "angular__core" % ngVersion,
+        "org.webjars.npm" % "angular__http" % ngVersion,
         "org.webjars.npm" % "angular__platform-browser-dynamic" % ngVersion,
         "org.webjars.npm" % "angular__platform-browser" % ngVersion,
         "org.webjars.npm" % "systemjs" % "0.19.31",
