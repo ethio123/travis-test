@@ -22,7 +22,7 @@ resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 resolvers += Resolver.sonatypeRepo("snapshots")
 
 libraryDependencies ++= {
-    val ngVersion="2.0.0-rc.5"
+    val ngVersion="2.0.0-rc.4"
     Seq(
         "org.postgresql" % "postgresql" % "9.4.1207",
         "com.typesafe.play" %% "play-slick" % "2.0.0",

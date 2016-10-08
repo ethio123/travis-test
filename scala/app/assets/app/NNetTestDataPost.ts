@@ -1,6 +1,6 @@
 import {Component} from "@angular/core"
 import {bootstrap} from "@angular/platform-browser-dynamic"
-import {HTTP_PROVIDERS, Http, Headers, Response} from "@angular/http"
+import {HTTP_PROVIDERS, Http, Headers, Response, RequestOptions} from "@angular/http"
 
 @Component({
   selector: "todo-nnet-test",
@@ -13,7 +13,11 @@ import {HTTP_PROVIDERS, Http, Headers, Response} from "@angular/http"
     <input name="testData" #testData>
   </div>
 
-  <button (click)="postTestData(testData)"
+  <div class="field">
+    <input name="testResult" #testResult>
+  </div>
+
+  <button (click)="postTestData(testData, testResult)"
     class="ui positive right floated button">
   Submit</button>
 </form>
@@ -24,11 +28,20 @@ class NNetTestDataComponent {
   constructor(private http:Http) {
   }
 
-  postTestData(testData:HTMLInputElement):boolean {
-    let header = new Headers( {
+  postTestData(testData:HTMLInputElement, testResult:HTMLInputElement):boolean {
+    let testUrl = "eval"
+    let headers = new Headers( {
       "Content-Type": "text/plain"
     })
-    this.http.get("http://localhost:5000/hi")
+    let body = testData.value
+    let options = new RequestOptions( { headers: headers })
+
+    this.http.post(testUrl, body, options)
+      .subscribe((res:Response) => {
+        console.log(res)
+        testResult.value = res.text()
+      })
+
     return false
   }
 }
