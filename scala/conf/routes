@@ -4,6 +4,7 @@ GET     /reddit                     controllers.Application.redditEdit
 GET     /hi                         controllers.Application.sayHi
 GET     /nnet                       controllers.Application.nnet
 GET     /testCharts                 controllers.Application.testCharts
+GET     /products                   controllers.Application.products
 POST    /init-nnet                  controllers.Application.initNNet
 POST    /eval                       controllers.Application.eval
 
