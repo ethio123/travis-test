@@ -1,5 +1,7 @@
 
 GET     /                           controllers.Application.index
+GET     /mateng                     controllers.Application.mateng
+GET     /form1                      controllers.Application.form1
 GET     /reddit                     controllers.Application.redditEdit
 GET     /hi                         controllers.Application.sayHi
 GET     /nnet                       controllers.Application.nnet

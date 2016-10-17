@@ -8,9 +8,10 @@ lazy val commonSettings = Seq(
 )
 
 lazy val root = (project in file(".")).settings(commonSettings: _*)
-  .enablePlugins(PlayScala).aggregate(nnet).dependsOn(nnet)
+  .enablePlugins(PlayScala).aggregate(nnet, mateng).dependsOn(nnet, mateng)
 
 lazy val nnet = (project in file("nnet")).settings(commonSettings: _*)
+lazy val mateng = (project in file("mateng")).settings(commonSettings: _*)
 
 scalaVersion := "2.11.8"
 incOptions := incOptions.value.withNameHashing(true)

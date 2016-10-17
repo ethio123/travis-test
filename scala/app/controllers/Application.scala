@@ -22,6 +22,10 @@ import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 import akka.actor.ActorSystem
 import dele.book.common.NNet
+import org.ditw.mateng.AtomPropMatcherLib
+import org.ditw.mateng.ErrorHandling.MatcherManagerErrorMatcherIdAlreadyExist
+import org.ditw.mateng.matchers.{MatcherManager, SubMatchCheckerLib, TMatcher}
+import org.ditw.mateng.test.{TestAtom, TestInput}
 import org.joda.time.DateTime
 import play.api.libs.Files.TemporaryFile
 import play.api.libs.iteratee.Iteratee
@@ -51,6 +55,27 @@ class Application @Inject()(
     Ok(views.html.index1())
   }
 
+  def mateng = Action {
+    val mm = MatcherManager.create
+    val id = "id1"
+
+    implicit val sml = new SubMatchCheckerLib(List(), List())
+    mm.add(TMatcher.fromAtomMatcher(AtomPropMatcherLib.FExact("matchword"), Option(id)))
+
+    val input = TestInput.fromAtomArray("eng", IndexedSeq(TestAtom.textAtom("a"), TestAtom.textAtom("matchword"), TestAtom.textAtom("b"), TestAtom.textAtom("matchword")))
+    val rp = mm.m(input, sml)
+    val ma = rp.query(id)
+    Ok(s"$rp\n($id)matches ${ma.size}: $ma")
+  }
+
+  def form1 = Action {
+    /** change the template here to use a different way of compilation and loading of the ts ng2 app.
+      * index()  :    does no ts compilation in advance. the ts files are download by the browser and compiled there to js.
+      * index1() :    compiles the ts files to individual js files. Systemjs loads the individual files.
+      * index2() :    add the option -DtsCompileMode=stage to your sbt task . F.i. 'sbt ~run -DtsCompileMode=stage' this will produce the app as one single js file.
+      */
+    Ok(views.html.form1Test())
+  }
 
   def initNNet = Action(parse.multipartFormData) { req =>
     req.body.file("p").map{ p =>
